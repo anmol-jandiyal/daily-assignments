@@ -1,0 +1,123 @@
+javascirpt modules == js libraries that contains set of built in functions that can be used to provide necessary functionality in the application
+
+to include the module in the application use 
+" const obj= require("<module name>")"
+
+    
+node js uses additional datatype - buffer to store the file data (not available in browser)
+ buffer is mainly used to store binary data 
+
+
+fs.readFileSync("filename");
+
+return a bufferdata like <buffer 23 32 123 34...........................>
+
+to convert it to actual data use toString() or pass another parameter in readFileSync() "utf-8" for encoding
+
+
+renameSync("oldName","new name")  
+
+/////////////////////////////////////////////////////////////////////
+type of modules ---------
+Built-in modules:
+fs
+http
+url
+os
+path
+
+const someVariable = require('nameOfModule') to include a particular module in the code
+
+Local modules:
+
+first we have to export our own module in order to use it  in our program
+
+syntax: fun(){------------------------}
+        module.exports ={elements}
+
+
+Third-party modules:
+
+using npm we can install different  modules and use them in our program
+
+
+Modules help developers adhere to the DRY (Don't Repeat Yourself) principle in programming.
+we can give any name to the variable that will store the return data of require();
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+The fs module allows you to carry out several operations that involve files and folders. With the fs module you can:
+
+read files
+create files
+update files
+delete files
+rename files
+
+
+
+//////////////////////////////////////////////////
+//async
+fs.writeFile("name","data",callback)
+
+        callback(error){
+                console.log("runs after writing operation completes")
+        }
+
+
+//sync
+fs.writeFileSync("name","data")
+
+///////////////////////////////////////
+//reading async
+fs.readFile("name","utf-8".callback)
+
+        callback(error,data){
+                console.log(data.toString());
+                console.log("runs after reading operation completes")
+        }
+
+
+//sync
+fs.writeFileSync("name")
+
+///////////////////////////////////////
+//append sync
+fs.appendFileSync("name,data,)
+
+/////////////////////////////////////
+fs.cpSync("src","dst")
+
+/////////////////////////////
+//to delete file
+fs.unlinkSync("fileName")
+
+
+/////////// ////////////////
+//to get info related to file
+fs.statSync("fileName")
+
+/////////// ////////////////
+//to make new directory to file
+fs.mkdirSync("fileName")
+
+//////////////////////////////////////////////////////////
+promise based file handing
+
+fs.promise.readFile("name","utf-8")  //returns a promise
+.then((data)=>{
+        console.log("data has been read");
+})
+.catch((error)=>{
+        console.log("error")
+})
+
+
+//////////////////////////////////////////////////////////
+to take input from the user in the terminal we can use third party module
+"readline-sync"
+
+npm i readline-sync
+
+
+readline.question("jaiodjfaisojfi");  //returns the data input by the user console

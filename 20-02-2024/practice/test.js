@@ -14,7 +14,7 @@ fs.appendFileSync("sample1.txt", message);
 fs.mkdirSync("./test/data", { recursive: true });
  */
 
-const fs = require("fs");
+/* const fs = require("fs");
 
 const userInfo = {
 	uName: "anmol",
@@ -26,7 +26,7 @@ const product = {
 	pName: "car",
 	price: 31222,
 	currency: "$",
-};
+}; */
 
 /* function log(fileName, message) {
 	fs.appendFileSync(fileName, message);
@@ -42,7 +42,7 @@ const fileData = fs.readFileSync("log.txt", "utf-8");
 console.log(fileData); //returns a buffer data  //so place 2nd argument "utf-8"
  */
 
-fs.writeFile("sample.txt", "hello yo yo", function () {
+/* fs.writeFile("sample.txt", "hello yo yo", function () {
 	console.log("data have been written to the file"); //will execute once data inserted to file
 });
 console.log("above fun is non blocking i.e async");
@@ -55,5 +55,12 @@ const fileData = fs.readFile("log.txt", "utf-8", (error, data) => {
 
 console.log(fileData); //will contain undefined as this statement runs first
 //fs.readFile() doesnot return anything
-
+ */
 //async functions deos not take any call back
+
+/////////////////////////////////////////////////////////////////////////////
+
+let fs = require("fs");
+console.log(fs);
+
+//
