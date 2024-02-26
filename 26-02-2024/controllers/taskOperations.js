@@ -36,16 +36,16 @@ function replaceValidator(req, res, next) {
 //<---------------------CREATE REQUEST------------------->
 const createTask = function (req, res) {
 	const taskData = req.body;
-	taskData.status = "Not Completed";
+	taskData.completed = false;
 
 	//---------------append to file------------------------
 	taskList.push(taskData);
 	files.updateFile(taskList);
 
-	return res.status(201).send(`Task as been created with id ${taskData.id}`);
+	return res.status(201).send(`Task has been created with id ${taskData.id}`);
 };
 
-//<---------------------Get REQUEST------------------->
+//<---------------------Read REQUEST------------------->
 const getAllTasks = function (req, res) {
 	res.status(200).send(taskList);
 };
@@ -69,7 +69,7 @@ const replaceTask = function (req, res) {
 		return res.status(404).send(`Error: task with ID = ${id}  not Found`);
 	}
 
-	taskList.splice(taskIndex, 1, { ...req.body, status: "not completed", id: id });
+	taskList.splice(taskIndex, 1, { ...req.body, completed: false, id: id });
 
 	files.updateFile(taskList);
 	res.status(200).send(taskList[taskIndex]);
@@ -80,7 +80,7 @@ const updateTask = function (req, res) {
 
 	for (const t of taskList) {
 		if (t.id === id) {
-			t.status = "Completed";
+			t.completed = true;
 
 			files.updateFile(taskList);
 			return res.status(202).send(`Task with id ${id} completed`);
