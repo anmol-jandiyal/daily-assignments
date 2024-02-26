@@ -78,12 +78,15 @@ const replaceTask = function (req, res) {
 const updateTask = function (req, res) {
 	const id = req.params.id;
 
+	if (req.body.completed === undefined) {
+		return res.status(400).send("Error: Completed field not present");
+	}
 	for (const t of taskList) {
 		if (t.id === id) {
-			t.completed = true;
+			t.completed = req.body.completed;
 
 			files.updateFile(taskList);
-			return res.status(202).send(`Task with id ${id} completed`);
+			return res.status(202).send(`Task with id ${id} completed field updated to ${t.completed}`);
 		}
 	}
 	return res.status(404).send(`Error : task with id : ${id} not found`);
