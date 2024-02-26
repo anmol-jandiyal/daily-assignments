@@ -1,4 +1,3 @@
-const taskOperations = require("./controllers/taskOperations");
 const { router } = require("./routers/crudRouters");
 
 const express = require("express");
