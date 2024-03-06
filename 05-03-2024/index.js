@@ -5,7 +5,11 @@ const url = "mongodb://localhost:27017/";
 
 const server = express();
 
-//<-------UNRATED MOVIES----------------->
+//<========================================================>
+//<===================PIPELINE EXAMPLES========================>
+//<========================================================>
+
+//<-------1. Unrated movies----------------->
 /* const pipeline = [
 	{
 		$match: {
@@ -20,20 +24,19 @@ const server = express();
 	},
 ]; */
 
-//<-----------------------MOVIES OR SERIES THAT HAS RATING GREATER THAN 6>
+//<-----------------------2. MOVIES OR SERIES THAT HAS RATING GREATER THAN 8>
 /* const pipeline = [
 	{
 		$match: {
 			"imdb.rating": { $gt: 8 },
 		},
 	},
-
 	{
 		$project: { imdb: 1, title: 1, plot: 1, type: 1 },
 	},
 ]; */
 
-// <--------------MOVIE GROUPED BASED UPON LANGUAGES---------------------->
+// <--------------3. MOVIE GROUPED BASED UPON LANGUAGES---------------------->
 /* const pipeline = [
 	{
 		$unwind: "$languages",
@@ -54,11 +57,11 @@ const server = express();
 	},
 ]; */
 
-//<---------------------ten latest movies------------------->
+//<---------------------4. ten latest movies------------------->
 /* const pipeline = [
 	{
 		$sort: {
-			released: 1,
+			released: -1,
 		},
 	},
 	{
@@ -72,7 +75,7 @@ const server = express();
 	},
 ]; */
 
-//<------------------segregation movies and series--------------->
+//<------------------5. segregation movies and series--------------->
 /* const pipeline = [
 	{
 		$group: {
@@ -85,7 +88,7 @@ const server = express();
 	},
 ]; */
 
-//<------------------to ten movies that received max no. of awards  --------------->
+//<------------------6. to ten movies that received max no. of awards  --------------->
 /* const pipeline = [
 	{
 		$match: {
@@ -110,7 +113,7 @@ const server = express();
 	},
 ]; */
 
-//<-----------grouping movies based upon genre------------------------->
+//<-----------7. grouping movies based upon genre------------------------->
 /* const pipeline = [
 	{
 		$match: {
@@ -131,7 +134,7 @@ const server = express();
 	},
 ]; */
 
-//<----------Movies released in 2015 in India and have language = hindi ---------------------- >
+//<----------8. Movies released in 2015 in India and have language = hindi ---------------------- >
 /* const pipeline = [
 	{
 		$match: {
@@ -149,7 +152,7 @@ const server = express();
 	},
 ]; */
 
-//<----------movies having genres as comedy and animation and excluding "Short" ---------------------- >
+//<----------9. movies having genres as comedy and animation and excluding "Short" ---------------------- >
 /* const pipeline = [
 	{
 		$match: {
@@ -179,7 +182,7 @@ const server = express();
 	},
 ]; */
 
-//<--------------------top 5 direcotrs who directed large no. of movies----------------- >
+//<--------------------10. top 5 direcotrs who directed large no. of movies----------------- >
 /* const pipeline = [
 	{
 		$unwind: {
@@ -204,7 +207,7 @@ const server = express();
 	},
 ]; */
 
-//<-------------top 5 actors casted in max no. of movies------------------------>
+//<-------------11. top 5 actors casted in max no. of movies------------------------>
 /* const pipeline = [
 	{
 		$unwind: {
@@ -229,6 +232,92 @@ const server = express();
 	},
 ];
  */
+
+//<------------12. movies/series segregated based upon country------------->
+/* const pipeline = [
+	{
+		$unwind: {
+			path: "$countries",
+		},
+	},
+	{
+		$group: {
+			_id: "$countries",
+			movies: {
+				$push: "$title",
+			},
+		},
+	},
+]; */
+
+//<------------13. movies/series directed by 3 or more persons------------->
+
+/* const pipeline = [
+	{
+		$addFields: {
+			noOfDirectors: { $size: "$directors" },
+		},
+	},
+	{
+		$match: {
+			noOfDirectors: {
+				$gt: 2,
+			},
+		},
+	},
+	{
+		$limit: 10,
+	},
+	{
+		$project: {
+			title: 1,
+			noOfDirectors: 1,
+			directors: 1,
+		},
+	},
+];
+ */
+
+//<------------14. spliting movies based upon rating ------------->
+/* const pipeline = [
+	{
+		$match: {
+			type: "movie",
+		},
+	},
+	{
+		$group: {
+			_id: "$rated",
+			movies: {
+				$push: "$title",
+			},
+		},
+	},
+]; */
+
+//<-----------15. count of movies having imdb rating between 6to 7 ------------->
+const pipeline = [
+	{
+		$match: {
+			"imdb.rating": {
+				$lt: 7,
+				$gte: 6,
+			},
+		},
+	},
+	{
+		$limit: 100,
+	},
+	{
+		$project: {
+			title: 1,
+		},
+	},
+];
+
+//<===========================================================>
+//<===========================================================>
+//<===========================================================>
 async function aggregationFunction(collection) {
 	try {
 		const result = await collection.aggregate(pipeline).toArray();
