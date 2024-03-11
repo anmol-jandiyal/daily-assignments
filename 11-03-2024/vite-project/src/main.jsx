@@ -50,6 +50,28 @@ const features = [
 	},
 ];
 
+function Features() {
+	return (
+		<div className="features">
+			{features.map((feature, index) => {
+				return (
+					<div className={feature.className} key={index}>
+						<img src={feature.imgSrc} alt="" />
+
+						<div className="right">
+							{feature.icon}
+
+							<h2>{feature.heading}</h2>
+
+							<p>{feature.description}</p>
+						</div>
+					</div>
+				);
+			})}
+		</div>
+	);
+}
+
 function Page2() {
 	return (
 		<>
@@ -59,23 +81,7 @@ function Page2() {
 					<h1>Everything you need in a modern bank and more.</h1>
 				</div>
 
-				<div className="features">
-					{features.map((feature, index) => {
-						return (
-							<div className={feature.className} key={index}>
-								<img src={feature.imgSrc} alt="" />
-
-								<div className="right">
-									{feature.icon}
-
-									<h2>{feature.heading}</h2>
-
-									<p>{feature.description}</p>
-								</div>
-							</div>
-						);
-					})}
-				</div>
+				<Features />
 			</div>
 		</>
 	);

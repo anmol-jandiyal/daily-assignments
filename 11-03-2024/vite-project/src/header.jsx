@@ -10,7 +10,7 @@ function Header() {
 		<nav>
 			<img src={logoSrc} alt="" className="left" />
 
-			<div className="right switchOnOffNav">
+			<div className="right">
 				<ul>
 					{navOptions.map((opt, index) => {
 						return (
