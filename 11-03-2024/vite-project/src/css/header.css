@@ -1,0 +1,35 @@
+nav {
+	--btn-color: linear-gradient(var(--bk-1), var(--bk-2));
+
+	background-color: white;
+	height: fit-content;
+
+	padding: 1rem 2rem;
+	display: flex;
+	justify-content: space-between;
+
+	z-index: 10;
+
+	transition: all 0.3s;
+}
+/* left part */
+nav img {
+	max-height: 40px;
+}
+
+/* right part */
+nav .right {
+	flex: 2 0 0;
+	max-width: 40rem;
+}
+nav .right ul {
+	list-style-type: none;
+	font-size: var(--p-font-size);
+
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+nav .right li {
+	transition: all 0.1s;
+}

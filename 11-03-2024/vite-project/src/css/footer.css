@@ -1,0 +1,26 @@
+footer {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	align-items: center;
+	background-color: var(--footer-bk);
+	padding: 20px;
+}
+
+footer a {
+	color: rgb(188, 184, 184);
+}
+footer a:hover {
+	color: white;
+}
+footer .logo-links a {
+	margin: 20px;
+}
+footer .important-links-div ul {
+	gap: 20px;
+	display: flex;
+}
+footer .important-links-div ul li {
+	font: 10px;
+	list-style: none;
+}

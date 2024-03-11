@@ -1,0 +1,17 @@
+* {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+:root {
+	--bk-1: rgb(150, 239, 16);
+	--bk-2: rgb(130, 169, 71);
+	--footer-bk: rgb(52, 51, 51);
+	--footer-color: rgb(218, 218, 218);
+	--p-font-size: 1.1rem;
+	--body-bk: #f0f0f0;
+}
+
+a {
+	color: black;
+}
