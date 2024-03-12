@@ -1,0 +1,163 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+
+	font-family: sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background-color: var(--body-bk);
+}
+
+.btn {
+	font-size: 1.4rem;
+	padding: 0.5em 0.7em;
+
+	border: none;
+	border-radius: 2rem;
+
+	background: var(--btn-color);
+}
+.btn:hover {
+	cursor: pointer;
+}
+.icon {
+	padding: 1rem;
+
+	border-radius: 50%;
+	background-color: var(--icon-bk-color);
+}
+
+.page {
+	min-height: 100vh;
+	max-width: 80rem;
+
+	padding: 3.5rem;
+	padding-top: 8rem;
+
+	margin: auto;
+
+	border-top: 1px black solid;
+}
+
+/* heading  on the pages */
+.heading {
+	margin-bottom: 5rem;
+}
+.heading h3 {
+	color: var(--bk-2);
+	font-size: var(--p-font-size);
+	font-weight: 600;
+}
+.heading h1 {
+	margin: auto;
+
+	font-size: 3rem;
+}
+
+/* descriptions */
+.description {
+	padding: 3rem 4rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.description .right > * {
+	margin: 2rem;
+}
+.description p {
+	line-height: 2rem;
+	color: rgb(58, 58, 58);
+}
+
+/* <---------------------homepage---------------> */
+.home-main-content {
+	display: flex;
+
+	width: 90%;
+	margin: auto;
+	justify-content: center;
+	align-items: center;
+
+	color: rgb(44, 44, 44);
+}
+/* left */
+.home-main-content .left h1 {
+	font-size: 3rem;
+	margin-bottom: 1em;
+}
+.home-main-content .left h2 {
+	font-size: 1.8rem;
+	margin-bottom: 1em;
+}
+/* skew effect */
+.home-main-content .left h1 span,
+.modal-window .open-account-window h2 span {
+	padding: 4px;
+
+	position: relative;
+
+	/* to positoin ::before  correctly*/
+	display: inline-block;
+	height: auto;
+	width: fit-content;
+}
+.home-main-content .left h1 span::before,
+.modal-window .open-account-window h2 span::before {
+	background: linear-gradient(var(--bk-2), var(--bk-1));
+
+	content: "";
+	left: -3px;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+
+	transform: skewX(-10deg);
+
+	z-index: -1;
+	/* this make the layer behind the span element */
+}
+.home-main-content .left a {
+	font-size: var(--p-font-size);
+	color: greenyellow;
+	text-decoration: underline;
+}
+.home-main-content .right,
+.home-main-content .left {
+	flex: 1 0 0;
+}
+.home-main-content .right img {
+	width: 90%;
+}
+
+/* ===============feature page=============== */
+
+.features {
+	--icon-bk-color: var(--bk-1);
+}
+/* /features============ */
+.features .icon {
+	width: 60px;
+	height: 60px;
+}
+.features .description > * {
+	flex: 1 0 0;
+}
+.features img {
+	flex: 1 0 0;
+	width: 50%;
+}
+
+.description .right > * {
+	margin: 2rem;
+}
+.description p {
+	line-height: 2rem;
+}
