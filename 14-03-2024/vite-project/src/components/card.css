@@ -1,0 +1,22 @@
+.weather-card {
+	background-color: blanchedalmond;
+	width: fit-content;
+	margin: auto;
+	padding: 40px;
+	border-radius: 20px;
+	border: black 1px solid;
+}
+.weather-card * {
+	text-align: center;
+}
+
+.weather-card .temperature {
+	color: darkgreen;
+}
+.weather-card .weather-description {
+	color: rgb(14, 65, 159);
+}
+.weather-card .other-info {
+	display: flex;
+	gap: 30px;
+}
