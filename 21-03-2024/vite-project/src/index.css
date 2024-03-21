@@ -1,0 +1,16 @@
+.active {
+	color: red;
+	font-weight: bolder;
+}
+
+form {
+	margin: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.wrongPassword,
+.wrongPassword:focus {
+	outline: red 2px solid;
+}
