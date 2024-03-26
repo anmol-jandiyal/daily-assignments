@@ -1,0 +1,50 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 30px;
+	gap: 20px;
+}
+
+form input {
+	margin: 3px;
+	padding: 3px;
+	font-size: 1.2rem;
+}
+button {
+	padding: 3px;
+	margin: 2px;
+}
+.navBar {
+	font-size: 1.2rem;
+
+	display: flex;
+	justify-content: flex-end;
+	gap: 30px;
+	background-color: rgb(255, 142, 101);
+	padding: 10px;
+}
+
+.activeTab {
+	font-weight: bolder;
+	color: rgb(0, 0, 0);
+}
+
+.todoDiv {
+	padding: 6px;
+	margin: 8px;
+	display: flex;
+	align-items: center;
+
+	border: 2px grey solid;
+}
+.todoDiv .left {
+	flex-grow: 2;
+}
+.completed {
+	background-color: greenyellow;
+}
